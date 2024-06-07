@@ -60,7 +60,7 @@ app.get('/get/jobs', async (req, res) => {
 });
 
 // get jobs details using ID
-app.get('/get/job/details/:id', (req, res) => {
+app.get('/get/job/details/:id', async (req, res) => {
     try {
         connectToDB();
         const jobdetailsID = req.params.id;
