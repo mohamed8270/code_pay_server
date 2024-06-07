@@ -59,6 +59,21 @@ app.get('/get/jobs', async (req, res) => {
     }
 });
 
+// get jobs details using ID
+app.get('/get/job/details/:id', (req, res) => {
+    try {
+        connectToDB();
+        const jobdetailsID = req.params.id;
+        const jobsdetailsout = await JobModel.findById(jobdetailsID);
+        if(!jobsdetailsout) {
+            res.status(404).json({message: 'Job Details not found'});
+        }
+        res.json(jobsdetailsout);
+    } catch (error) {
+        res.status(500).send({ message: "An error occurred while getting the job details", error: error.message });
+    }
+});
+
 // listener
 app.listen(port, () => {
     console.log(`App running on port ${port}`);
