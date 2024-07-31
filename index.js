@@ -26,12 +26,10 @@ const hosturl = `${localhost+port}`;
 // post job data
 app.post('/scrape/jobs', async (req, res) => {
     const joburl = req.body.url;
-    // const joburl = `https://www.foundit.in/job/fflutter-developer-radial-hr-solutions-bengaluru-bangalore-remote-23378163?searchId=326009df-0a1a-46e3-8a12-696e275f1505`;
-    // const joburl = `https://www.foundit.in/job/flutter-developer-techknowledgehuborg-remote-india-28836478?searchId=49b7dc8a-46ba-4b26-bed8-276e103066e3`;
     try {
         // const scrapedData = await scrapeJobData(joburl);
         const scrapedData = await scrapeAndStoreJobData(joburl);
-        res.json({message: 'Data scarped successfully!', 'output': scrapedData});
+        res.status(200).json({message: 'Data scarped successfully!', 'output': scrapedData});
     } catch (error) {
         res.status(500).send({ message: "An error occurred while getting the job details", error: error.message });
     }
