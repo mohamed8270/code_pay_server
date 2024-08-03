@@ -6,7 +6,7 @@ require('dotenv').config();
 
 //  imports
 const {scrapeAndStoreJobData} = require('./lib/actions');
-const scrapeJobData = require('./lib/scraper');
+const {scrapeJobData} = require('./lib/scraper');
 const {extractWhiteSpace} = require('./lib/utils/utils');
 const JobModel = require('./models/job.model');
 const connectToDB = require('./mongoose');
