@@ -7,7 +7,7 @@ require('dotenv').config();
 
 //  imports
 const {scrapeAndStoreJobData} = require('./lib/actions');
-const {scrapeJobData} = require('./lib/scraper');
+const scrapeJobData = require('./lib/scraper');
 const {extractWhiteSpace} = require('./lib/utils/utils');
 
 // express objects
