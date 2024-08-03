@@ -1,16 +1,14 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const JobModel = require('./models/job.model');
+const connectToDB = require('./mongoose');
 require('dotenv').config();
 
 //  imports
 const {scrapeAndStoreJobData} = require('./lib/actions');
 const {scrapeJobData} = require('./lib/scraper');
 const {extractWhiteSpace} = require('./lib/utils/utils');
-const JobModel = require('./models/job.model');
-const connectToDB = require('./mongoose');
-
 
 // express objects
 const app = express();
