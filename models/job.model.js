@@ -14,12 +14,8 @@ const jobSchema = new mongoose.Schema({
     jobType: {type: String, required: false},
     jobIndustry: {type: String, required: false},
     jobFunction: {type: String, required: false},
-    jobRole: [
-        {type: String, required: false},
-    ],
-    jobSkillsets: [
-        {type: String, required: false},
-    ],
+    jobRole: [{type: String, required: false}],
+    jobSkillsets: [{type: String, required: false}],
     jobCompanyUrl: {type: String, required: false},
     jobSource: {type: String, required: false},
     jobApply: {type: String, required: true},
