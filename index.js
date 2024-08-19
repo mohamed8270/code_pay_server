@@ -9,7 +9,7 @@ require('dotenv').config();
 const {scrapeAndStoreJobData} = require('./lib/actions');
 const scrapeJobData = require('./lib/scraper');
 const {extractWhiteSpace} = require('./lib/utils/utils');
-const {scrapeNewsData} = require('./lib/fetch/news_fetch');
+const {fetchNewsData} = require('./lib/fetch/news_fetch');
 
 // express objects
 const app = express();
@@ -74,7 +74,7 @@ app.get('/get/job/details/:id', async (req, res) => {
 // fetch news data
 app.get('/newsdata', async (req, res) => {
     try {
-        scrapeNewsData();
+        fetchNewsData();
         res.status(200).json({message: "News successfully fetched"});
     } catch (error) {
         res.status(500).send({message: "An occur while fetching news data", error: error.message});
