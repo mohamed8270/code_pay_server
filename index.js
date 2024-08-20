@@ -74,8 +74,8 @@ app.get('/get/job/details/:id', async (req, res) => {
 // fetch news data
 app.get('/newsdata', async (req, res) => {
     try {
-        const data = fetchNewsData();
-        res.status(200).json({message: data});
+        fetchNewsData();
+        res.status(200).json({message: "Data successfully added"});
     } catch (error) {
         res.status(500).send({message: "An occur while fetching news data", error: error.message});
     }
