@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const JobModel = require('./models/job.model');
+const NewsModel = require('./models/news.model');
 const connectToDB = require('./mongoose');
 require('dotenv').config();
 
@@ -71,11 +72,20 @@ app.get('/get/job/details/:id', async (req, res) => {
     }
 });
 
-// fetch news data
+// fetch news data and store
 app.get('/newsdata', (req, res) => {
     try {
-        const data = storeNewsData();
-        res.json(data);
+        storeNewsData();
+    } catch (error) {
+        res.status(500).send({message: "An occur while fetching news data", error: error.message});
+    }
+});
+
+app.get('/fetchnews', async (req, res) => {
+    try {
+        connectToDB();
+        const news = await NewsModel.find();
+        res.json(news);
     } catch (error) {
         res.status(500).send({message: "An occur while fetching news data", error: error.message});
     }
