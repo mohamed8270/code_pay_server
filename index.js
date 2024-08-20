@@ -75,7 +75,8 @@ app.get('/get/job/details/:id', async (req, res) => {
 // fetch news data and store
 app.get('/newsdata', (req, res) => {
     try {
-        storeNewsData();
+        const data = storeNewsData();
+        res.status(201).json({message: "Created successfully"});
     } catch (error) {
         res.status(500).send({message: "An occur while fetching news data", error: error.message});
     }
@@ -85,7 +86,7 @@ app.get('/fetchnews', async (req, res) => {
     try {
         connectToDB();
         const news = await NewsModel.find();
-        res.json(news);
+        res.status(200).json(news);
     } catch (error) {
         res.status(500).send({message: "An occur while fetching news data", error: error.message});
     }
